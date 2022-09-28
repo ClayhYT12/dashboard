@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/painel.css">
+    <title>painel</title>
+</head>
+<body>
+    <div class="container">
+        <div class="cheatsheet gerenciador">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/img/logoluminus.png" alt="">
+                </div>
+                <button>
+                    <img id="img" onclick="clickLogout()" src="img/usuario.png">
+                </button>
+
+                <div id="avt-config" class="avatar-config">
+                    <div class="option-avatar">
+                        <a href=""><img src="img/logout.png" alt="">Sair</a>
+                    </div><!--option-avatar-->
+                </div><!--avatar-config-->
+
+                <script>
+                    function clickLogout() {
+                        var logout = document.getElementById("avt-config");
+                        if (logout.style.display === "block") {
+                            logout.style.display = "none";
+                            } else {
+                                logout.style.display = "block";
+                            }
+                        }
+                </script>
+            </div>
+            <div class="container">
+                <div class="cheatsheet-fluid">
+                    <div class="files-wraper">
+                        <div class="upload">
+                            <div class="upload-w">
+                            <div class="wrap-file">    
+                                <h1>Upload Material</h1>
+                                <div class="upload-wrap">
+                                    <form action="/upload" method="post" enctype="multipart/form-data">
+                                        <input type="file" id="file" name="file">
+                                        <label for="file">
+                                            <span class="text">Selecionar Arquivo</span>
+                                            <span>Procurar</span>
+                                        </label>
+                                        <input type="submit" value="Upload" class="btn-upload">
+                                    </form>
+                               
+                                </div>
+                                
+                            </div>
+
+                            <script>
+                                document.querySelector('#file').addEventListener('change', function(){
+                                    document.querySelector('.text').textContent = this.files[0].name;
+                                })
+                            </script>
+                            
+                           <div class="clear"></div>
+                            <div class="dropdown">
+                                <input type="text" class="textBox" placeholder="Clientes" readonly>
+                                <div class="option">
+                                    <% for(let user of usuarios) { %>
+                                        <div onclick="show('<%= user.user_name %>')"><ion-icon name="person-circle-outline"></ion-icon></ion-icon><span><%= user.user_name %></span> </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <script>
+                                function show(anything){
+                                    document.querySelector('.textBox').value = anything;
+                                }
+
+                                let dropdown = document.querySelector('.dropdown');
+                                dropdown.onclick = function(){
+                                    dropdown.classList.toggle('active');
+                                }
+                            </script>
+
+                            </div>
+                        </div>
+
+                        <div class="fatura2">
+                            <div class="fatura-w">
+                            <h1>Gerar Fatura</h1>
+                            
+                            <div class="dropdown2">
+                                <input id="ClientFature" type="text" class="textBox2" placeholder="Clientes" readonly>
+                                <div class="option">
+                                    <% for(let user of usuarios) { %>
+                                    <div onclick="mostrar('<%= user.user_name %>')"><ion-icon name="person-circle-outline"></ion-icon></ion-icon><span><%= user.user_name %></span> </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <script>
+                                function mostrar(anything){
+                                    document.querySelector('.textBox2').value = anything;
+                                }
+
+                                let dropdown2 = document.querySelector('.dropdown2');
+                                    dropdown2.onclick = function(){
+                                    dropdown2.classList.toggle('active');
+                                }
+                          
+                            </script>   
+                            <div class="wrap-download">>
+                                <div class="fatura-wraper">
+                                    <input id="AmountFature" type="Text" size="12" placeholder="Digite o valor em reais" onKeyUp="mascaraMoeda(this, event)" value="">
+                                    <div class="date-1">
+                                        <span>Data de vencimento</span>
+                                        <input id="DateVencimentFature" type="date" name="">
+                                    </div>
+                                </div>
+                                
+                                <button onclick="GeneratePayment()">Gerar Fatura</button>
+                                <span id="sucess">Sucess</span>
+                                <span id="error">Error</span>
+
+                                <script>
+                                    String.prototype.reverse = function(){
+                                      return this.split('').reverse().join(''); 
+                                    };
+
+                                    function mascaraMoeda(campo,evento){
+                                      var tecla = (!evento) ? window.event.keyCode : evento.which;
+                                      var valor  =  campo.value.replace(/[^\d]+/gi,'').reverse();
+                                      var resultado  = "";
+                                      var mascara = "#.###.###.###.###.###,##".reverse();
+                                      for (var x=0, y=0; x<mascara.length && y<valor.length;) {
+                                        if (mascara.charAt(x) != '#') {
+                                          resultado += mascara.charAt(x);
+                                          x++;
+                                        } else {
+                                          resultado += valor.charAt(y);
+                                          y++;
+                                          x++;
+                                        }
+                                      }
+                                      campo.value = resultado.reverse();
+                                    }
+                                </script>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="postagem upload-wrap container">
+                            <form action="/postimg" method="post" enctype="multipart/form-data" class="form-post">
+                                <h1>Nova Postagem</h1>
+                                <input type="text" placeholder="Title" id="post-title">
+                                <input type="text" placeholder="Body" id="post-body">
+                                <input type="file" id="file-post" name="file-post">
+                                <label for="file-post">
+                                    <span class="text-post" id="text-post">Selecionar Arquivo</span>
+                                    <span>Procurar</span>
+                                </label>
+                                <input type="text" placeholder="footer" id="post-footer">
+                                    
+                                <button onclick="Publicar()">Enviar </button>
+                            </form>
+                        </div>
+                        <script>
+                            document.querySelector('#file-post').addEventListener('change', function(){
+                                document.querySelector('.text-post').textContent = "/img/" + this.files[0].name;
+                            })
+                        </script>
+                        <div class="clear"></div>  
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+   <script src="/js/manager.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    
+    
+</body>
+</html>

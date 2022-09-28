@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/painel.css">
+    <title>painel</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar-bg">
+        <div class="menu-left">
+            <div class="menu">            
+                <div class="link-menu">
+                    <a href="https://localhost:3000/inicio/<%= usuario %>">
+                        <img src="/img/home.png" width="12px" height="12px"><span>Inicio</span> 
+                     </a><br>
+                </div>
+
+            <div class="link-menu">
+                <a href="https://localhost:3000/download/<%= usuario %>">
+                    <img src="/img/donwload.png" width="12px" height="12px"><span>Download Materiais</span> 
+                 </a><br>
+                </div>
+            <div class="link-menu">
+                <a href="https://localhost:3000/painel/<%= usuario %>">
+                    <img src="/img/fatura.png" width="12px" height="12px"><span>Faturas</span> 
+                 </a>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="cheatsheet">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/img/logoluminus.png" alt="">
+                </div>
+                <button>
+                    <img id="img" onclick="clickLogout()" src="/img/usuario.png">
+                </button>
+
+                <div id="avt-config" class="avatar-config">
+                    <div class="option-avatar">
+                        <a href=""><img src="/img/logout.png" alt="">Sair</a>
+                    </div><!--option-avatar-->
+                </div><!--avatar-config-->
+
+                <script>
+                    function clickLogout() {
+                        var logout = document.getElementById("avt-config");
+                        if (logout.style.display === "block") {
+                            logout.style.display = "none";
+                            } else {
+                                logout.style.display = "block";
+                            }
+                        }
+                </script>
+            </div>
+            <div class="container">
+                <div class="cheatsheet-fluid">
+                    <div class="painel-faturas download">
+                        <div class="header-fatura">
+                           <p>
+                            Download Materiais
+                           </p> 
+                        </div>
+                        <div class="fatura-2">
+                            <table class="tb-fatura" border="2">
+                                <tr class="tr-1">
+                                    <td>Arquivo</td>
+                                    <td>Tamanho</td>
+                                    <td>Download</td>
+                                </tr>
+                                <tr class="tr-2">
+                                        <td>Nome do arquivo</td>
+                                        <td>2MB</td>
+                                        <td><Button class="btn-download"><a href="http://"> Download</a></Button></td>
+                                    </tr>   
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+   
+
+    
+</body>
+</html>

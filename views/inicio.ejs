@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/painel.css">
+    <title>painel</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar-bg">
+        <div class="menu-left">
+            <div class="menu">            
+                <div class="link-menu">
+                    <a href="https://localhost:3000/inicio/<%= usuario %>">
+                        <img src="/img/home.png" width="12px" height="12px"><span>Inicio</span> 
+                     </a><br>
+                </div>
+
+                <div class="link-menu">
+                    <a href="https://localhost:3000/download/<%= usuario %>">
+                        <img src="/img/donwload.png" width="12px" height="12px"><span>Download Materiais</span> 
+                     </a><br>
+                    </div>
+            <div class="link-menu">
+                <a href="https://localhost:3000/painel/<%= usuario %>">
+                    <img src="/img/fatura.png" width="12px" height="12px"><span>Faturas</span> 
+                 </a>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="cheatsheet">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/img/logoluminus.png" alt="">
+                </div>
+                <button>
+                    <img id="img" onclick="clickLogout()" src="/img/usuario.png">
+                </button>
+
+                <div id="avt-config" class="avatar-config">
+                    <div class="option-avatar">
+                        <a href=""><img src="/img/logout.png" alt="">Sair</a>
+                    </div><!--option-avatar-->
+                </div><!--avatar-config-->
+
+                <script>
+                    function clickLogout() {
+                        var logout = document.getElementById("avt-config");
+                        if (logout.style.display === "block") {
+                            logout.style.display = "none";
+                            } else {
+                                logout.style.display = "block";
+                            }
+                        }
+                </script>
+            </div>
+            <div class="container">
+                <div class="cheatsheet-fluid">
+                    <div class="start">
+                        <div class="start-container">
+                            <img src="/img/logoluminus.png" alt="">
+                            <h1>Bem-vindo</h1>
+                            <p>Somos uma Agência Especializada em Marketing para Empresas.
+                            Com mais de 10 anos de Experiência, nosso grupo tem crescido exponencialmente com empresas de vários segmentos, criação e desenvolvimento de Websites e Gestão eficiente em anúncios voltados a captação de clientes de potencial. Nosso Negocio e Vender o seu negócio. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+   
+
+    
+</body>
+</html>

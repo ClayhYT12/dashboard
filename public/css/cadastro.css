@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap');
+*{margin: 0px;padding: 0px;box-sizing: border-box;}
+
+body{
+    background-color: rgb(228, 189, 116);
+}
+.container-cadastrar{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding: 0px 10px;
+    min-height: 70vh;
+    gap: 10px;
+    height: auto;
+    background-color: bisque;
+    justify-content: center;
+    text-align: center;
+    margin: 5% auto;
+    border-radius: 5px;
+    background-image: url("/img/fundo01.png");
+    color: #FFF;
+    font-family: 'Work Sans';
+}
+.container-cadastrar h3{
+    padding-top: 10px;
+    
+}
+.form-action{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-action input{
+    height: 35px;
+    width: 90%;
+    margin: 0 auto;
+    /* margin: 0px 5px; */
+    padding: 0px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-family: 'Work Sans';
+    
+}
+
+button{
+    height: 35px;
+    width: 90%;
+    margin: 0 auto;
+    /* margin: 0px 5px; */
+    padding: 0px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-family: 'Work Sans';
+    font-weight: 600;
+
+}
